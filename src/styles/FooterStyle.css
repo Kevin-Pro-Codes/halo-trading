@@ -1,0 +1,31 @@
+
+/* Footer */
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  
+}
+
+.footer-col a {
+  color: var(--text-light);
+  text-decoration: none;
+ 
+}
+
+.footer-col a:hover {
+  text-decoration: underline;
+
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+ 
+}
+
+.disclaimer {
+
+  padding-bottom: 10px;
+   margin-bottom: 0px !important;
+}

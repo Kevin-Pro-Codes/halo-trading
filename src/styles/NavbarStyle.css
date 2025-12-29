@@ -1,0 +1,126 @@
+/* Update your navbar styles */
+.navbar {
+  width: 100vw; /* Full viewport width */ 
+  margin-left: calc(-50vw + 50%); /* Center alignment trick */
+  background-color: rgba(255, 255, 255, 0.97);
+  padding: 0;
+  position: sticky;
+  top: 0;   
+  padding: 10px; 
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  /*transform: translateY(-1px);*/  
+}
+
+/* Keep the nav-content centered but full width */
+.nav-content {
+  width: 100%;
+  max-width: var(--content-max-width, 1900px);
+  margin: 0 auto;
+  padding: 0 var(--container-padding, 1rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+
+}
+
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  margin-right: auto; /* Pushes everything else to the right */
+}
+
+.logo-img {
+  height: 3rem; /* Slightly reduced size */
+  width: auto;
+  padding-top: 2px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem; /* Increased gap between buttons */
+  margin-left: auto; /* Pushes nav links to the right */
+}
+
+/* Hamburger Menu */
+.hamburger-container {
+  display: flex;
+  align-items: center;
+}
+
+.hamburger-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  zoom: 2.7;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 50%;
+  height: 24px;
+  width: 30px;
+  position: relative;
+  z-index: 1001;
+  transition: var(--transition);
+}
+
+.hamburger-btn span {
+  display: block;
+  height: 1.5px;
+  width: 100%;
+  border-radius: 5px;
+  background-color: var(--text-dark);
+  transition: var(--transition);
+  transform-origin: center;
+}
+
+.hamburger-btn.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-btn.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--bg-light);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+/* Buttons */
+button {
+  cursor: pointer;
+ 
+}
+
+
+.nav-btn {
+  background: transparent;
+  color: var(--text-dark);
+  border: 1px solid var(--text-dark);
+  padding: 1rem 1rem; 
+  border-radius: var(--border-radius);
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.nav-btn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}

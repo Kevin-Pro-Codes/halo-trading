@@ -1,0 +1,107 @@
+/* Variables */
+:root {
+  --primary-color: #646cff;
+  --primary-hover: #535bf2;
+  --text-dark: black;
+  --text-light: #ffffff;
+  --bg-dark: black;
+  --bg-light: #ffffff;
+  --border-radius: 4px;
+  --transition: all 0.3s ease;
+}
+
+#root {
+  max-width: 100%;
+  margin: auto;
+  padding: 0rem;
+  text-align: center;
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  
+ 
+}
+
+html {
+  font-size: 15px;
+ 
+}
+
+
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* Utility Classes */
+.black-text {
+  color: var(--text-dark);
+}
+
+.white-text {
+  color: var(--text-light);
+}
+
+.bg-white {
+  background-color: var(--bg-light);
+}
+
+.bg-black {
+  background-color: var(--bg-dark);
+}
+
+
+section {
+  padding: 3rem 0;
+}
+
+.section-content {
+  max-width: 2280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.section-black {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

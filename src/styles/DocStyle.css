@@ -1,0 +1,23 @@
+/* Lists */
+.updates-list,
+.doc-links {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  text-align: center;
+  width: fit-content;
+}
+
+.updates-list li,
+.doc-links li {
+  margin-bottom: 0.5rem;
+}
+
+.doc-links a {
+  color: var(--text-dark);
+  text-decoration: none;
+}
+
+.doc-links a:hover {
+  text-decoration: underline;
+}

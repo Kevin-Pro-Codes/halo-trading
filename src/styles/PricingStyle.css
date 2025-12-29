@@ -1,0 +1,40 @@
+/* Pricing grid styles */
+.pricing-grid {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap; /* Allows wrapping on small screens */
+  margin-top: 2rem;
+}
+
+/* Individual pricing cards */
+.pricing-card {
+  flex: 1 1 300px; /* Flex grow/shrink, min width */
+  max-width: 320px;
+  background-color: #f8f8f8;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+/* Featured plan highlight (optional) */
+.pricing-card.featured {
+  border: 2px solid #007bff;
+  background-color: #eaf3ff;
+}
+
+
+.pricing-card button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.pricing-card button:hover {
+  background-color: var(--primary-hover);
+}
