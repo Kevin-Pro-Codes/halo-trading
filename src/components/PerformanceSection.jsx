@@ -103,40 +103,41 @@ const PerformanceSection = () => {
           </div>
         </div>
 
-        {/* Metrics Grid */}
-        <div className="row justify-content-center mb-5">
-          <div className="col-lg-10">
-            <div className="d-flex flex-wrap justify-content-center gap-4">
-              {metrics.map((metric, index) => (
-                <div 
-                  key={index} 
-                  className="bg-white rounded-3 shadow-sm p-4"
-                  style={{width: '200px'}}
-                >
-                  <div className="text-center">
-                    <div className={`bg-${metric.color} bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3`}
-                         style={{width: '50px', height: '50px'}}>
-                      <i className={`bi ${metric.icon} text-${metric.color}`}></i>
-                    </div>
-                    
-                    <div className="fw-bold mb-1">{metric.title}</div>
-                    <div className={`fs-3 fw-bold text-${metric.color} mb-2`}>
-                      {metric.value}
-                    </div>
-                    
-                    <div className={`badge bg-${metric.trend === 'up' ? 'success' : 'danger'} bg-opacity-10 text-${metric.trend === 'up' ? 'success' : 'danger'}`}>
-                      {metric.trend === 'up' ? '↗' : '↘'} {metric.change}
-                    </div>
-                    
-                    <div className="text-muted small mt-2">
-                      {metric.description}
-                    </div>
-                  </div>
-                </div>
-              ))}
+       {/* Metrics Grid - Mobile Responsive */}
+<div className="row justify-content-center mb-5">
+  <div className="col-12">
+    <div className="row g-3 g-md-4 justify-content-center">
+      {metrics.map((metric, index) => (
+        <div 
+          key={index} 
+          className="col-6 col-sm-4 col-md-3 col-lg-2" // Responsive columns
+        >
+          <div className="bg-white rounded-3 shadow-sm p-3 p-md-4 h-100"> {/* Responsive padding */}
+            <div className="text-center">
+              <div className={`bg-${metric.color} bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-2 mb-md-3`}
+                   style={{width: '40px', height: '40px'}}> {/* Smaller on mobile */}
+                <i className={`bi ${metric.icon} text-${metric.color}`}></i>
+              </div>
+              
+              <div className="fw-bold mb-1 small">{metric.title}</div> {/* Smaller text */}
+              <div className={`fs-4 fs-md-3 fw-bold text-${metric.color} mb-2`}> {/* Responsive font size */}
+                {metric.value}
+              </div>
+              
+              <div className={`badge bg-${metric.trend === 'up' ? 'success' : 'danger'} bg-opacity-10 text-${metric.trend === 'up' ? 'success' : 'danger'} small`}>
+                {metric.trend === 'up' ? '↗' : '↘'} {metric.change}
+              </div>
+              
+              <div className="text-muted small mt-2 d-none d-md-block"> {/* Hide description on mobile */}
+                {metric.description}
+              </div>
             </div>
           </div>
         </div>
+      ))}
+    </div>
+  </div>
+</div>
 
         {/* Performance Trends */}
         <div className="row justify-content-center mb-5">

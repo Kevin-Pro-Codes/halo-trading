@@ -160,48 +160,47 @@ const DocSection = () => {
         </div>
 
 
-        {/* Documentation Categories - FIXED to show 4 categories properly */}
-        <div className="row justify-content-center mb-5">
-          <div className="col-lg-10">
-            <h4 className="fw-bold mb-4 text-center">Browse Documentation</h4>
-            <div className="row g-4">
-              {documentationCategories.map((category) => (
-                <div key={category.id} className="col-md-6 col-lg-3">
-                  <div className="card border-0 shadow-sm h-100">
-                    <div className="card-body p-4 d-flex flex-column">
-                      <div className="mb-4">
-                        <div className={`bg-${category.color} bg-opacity-10 p-3 rounded-circle d-inline-block mb-3`}>
-                          <i className={`bi ${category.icon} text-${category.color} fs-4`}></i>
-                        </div>
-                        <h5 className="fw-bold mb-2">{category.title}</h5>
-                        <p className="text-muted small mb-0">{category.items.length} guides available</p>
-                      </div>
-                      
-                      <div className="mb-4 flex-grow-1">
-                        {category.items.map((item, index) => (
-                          <div key={index} className="mb-3">
-                            <div className="fw-bold small mb-1">{item.title}</div>
-                            <div className="text-muted small mb-2">{item.description}</div>
-                            <div className="d-flex justify-content-between align-items-center">
-                              <span className="badge bg-light text-dark small">{item.format}</span>
-                              <small className="text-muted">{item.time}</small>
-                            </div>
-                            {index < category.items.length - 1 && <hr className="my-3" />}
-                          </div>
-                        ))}
-                      </div>
-                      
-                      <button className="btn btn-outline-primary w-100 mt-auto">
-                        <i className="bi bi-arrow-right me-2"></i>
-                        View All
-                      </button>
-                    </div>
+      {/* Documentation Categories - FIXED to show 4 categories properly */}
+<div className="row justify-content-center mb-5">
+  <div className="col-lg-10">
+    <h4 className="fw-bold mb-4 text-center">Browse Documentation</h4>
+    <div className="row g-4">
+      {documentationCategories.map((category) => (
+        <div key={category.id} className="col-md-6 col-lg-3">
+          {/* REMOVE the outer border div and apply border-dark directly here */}
+          <div className="border border-dark rounded-3 h-100 p-4 d-flex flex-column"> {/* Combined into one div */}
+            <div className="mb-4">
+              <div className={`bg-${category.color} bg-opacity-10 p-3 rounded-circle d-inline-block mb-3`}>
+                <i className={`bi ${category.icon} text-${category.color} fs-4`}></i>
+              </div>
+              <h5 className="fw-bold mb-2">{category.title}</h5>
+              <p className="text-muted small mb-0">{category.items.length} guides available</p>
+            </div>
+            
+            <div className="mb-4 flex-grow-1">
+              {category.items.map((item, index) => (
+                <div key={index} className="mb-3">
+                  <div className="fw-bold small mb-1">{item.title}</div>
+                  <div className="text-muted small mb-2">{item.description}</div>
+                  <div className="d-flex justify-content-between align-items-center">
+                    <span className="badge bg-light text-dark small">{item.format}</span>
+                    <small className="text-muted">{item.time}</small>
                   </div>
+                  {index < category.items.length - 1 && <hr className="my-3" />}
                 </div>
               ))}
             </div>
+            
+            <button className="btn btn-outline-primary w-100 mt-auto">
+              <i className="bi bi-arrow-right me-2"></i>
+              View All
+            </button>
           </div>
         </div>
+      ))}
+    </div>
+  </div>
+</div>
 
 {/* Featured Guides - Compact without cards */}
 <div className="mb-4">

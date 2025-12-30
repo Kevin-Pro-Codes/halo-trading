@@ -130,99 +130,100 @@ const GallerySection = () => {
           </div>
         </div>
 
-        {/* Gallery Grid - Rounded corners on ALL sides */}
-        <div className="row g-4 mb-5">
-          {images.map((image, index) => (
-            <div key={index} className="col-sm-6 col-md-4 col-lg-3 d-flex">
-              <div className="card border-0 shadow-lg w-100 overflow-hidden bg-dark text-white d-flex flex-column rounded-md">
-                {/* Card Image or Bitcoin Icon - Rounded on ALL sides */}
-                <div 
-                  className="position-relative overflow-hidden d-flex align-items-center justify-content-center rounded-md" 
-                  style={{ 
-                    height: "200px",
-                    background: image.url ? `url(${image.url}) center/cover` : "#111"
-                  }}
-                >
-                  {/* If it's the Bitcoin card (no URL), show the Bitcoin SVG with crypto header */}
-                  {!image.url && (
-                    <>
-                      {/* Crypto Header Badge */}
-                      <div className="position-absolute top-0 end-0 m-3">
-                        <span className="badge bg-info bg-opacity-75 text-white rounded-md px-3 py-2">
-                          {image.icon} {image.category}
-                        </span>
-                      </div>
-                      
-                      <div className="text-center p-4">
-                        <div className="mb-3 d-flex justify-content-center">
-                          <BitcoinSVG size={80} />
-                        </div>
-                        <h6 className="fw-bold text-white mb-0">{image.title}</h6>
-                      </div>
-                    </>
-                  )}
-                  
-                  {/* If it has a URL (regular image), show the image with badge */}
-                  {image.url && (
-                    <>
-                      <div className="position-absolute top-0 end-0 m-3">
-                        <span className={`badge bg-${index % 2 === 0 ? 'primary' : 'info'} bg-opacity-75 text-white rounded-md px-3 py-2`}>
-                          {image.icon} {image.category}
-                        </span>
-                      </div>
-                    </>
-                  )}
+{/* Gallery Grid with Proper Spacing */}
+<div className="row g-4 g-md-5 mb-5"> {/* Increased gaps */}
+  {images.map((image, index) => (
+    <div key={index} className="col-sm-6 col-md-4 col-lg-3">
+      {/* Container without card classes */}
+      <div className="overflow-hidden bg-dark text-white d-flex flex-column rounded-md border border-dark border-2 shadow-lg">
+        {/* Image/Icon Container */}
+        <div 
+          className="position-relative overflow-hidden d-flex align-items-center justify-content-center rounded-top-md" 
+          style={{ 
+            height: "180px",
+            background: image.url ? `url(${image.url}) center/cover` : "#111"
+          }}
+        >
+          {/* If it's the Bitcoin card (no URL), show the Bitcoin SVG with crypto header */}
+          {!image.url && (
+            <>
+              {/* Crypto Header Badge */}
+              <div className="position-absolute top-0 end-0 m-2 m-md-3">
+                <span className="badge bg-info bg-opacity-75 text-white rounded-md px-2 px-md-3 py-1 py-md-2">
+                  {image.icon} {image.category}
+                </span>
+              </div>
+              
+              <div className="text-center p-3 p-md-4">
+                <div className="mb-2 mb-md-3 d-flex justify-content-center">
+                  <BitcoinSVG size={70} />
                 </div>
-                
-                {/* Card Body */}
-                <div className="card-body text-center bg-dark p-3 flex-grow-0">
-                  <h6 className="card-title fw-bold mb-1 text-white">{image.title}</h6>
-                  <p className="card-text text-white-50 small mb-0">{image.description}</p>
-                </div>
+                <h6 className="fw-bold text-white mb-0">{image.title}</h6>
+              </div>
+            </>
+          )}
+          
+          {/* If it has a URL (regular image), show the image with badge */}
+          {image.url && (
+            <>
+              <div className="position-absolute top-0 end-0 m-2 m-md-3">
+                <span className={`badge bg-${index % 2 === 0 ? 'primary' : 'info'} bg-opacity-75 text-white rounded-md px-2 px-md-3 py-1 py-md-2`}>
+                  {image.icon} {image.category}
+                </span>
+              </div>
+            </>
+          )}
+        </div>
+        
+        {/* Content Section */}
+        <div className="text-center bg-dark p-3 flex-grow-0 mt-3"> {/* Increased mt-2 to mt-3 */}
+          <h6 className="fw-bold mb-2 text-white">{image.title}</h6> {/* Added mb-2 */}
+          <p className="text-white-50 small mb-0">{image.description}</p>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
+   {/* Featured Systems - Container Layout */}
+<div className="row mb-5">
+  <div className="col-lg-10 mx-auto">
+    <h3 className="text-center mb-4 fw-bold text-white">Featured Trading Systems</h3>
+    <div className="row g-4">
+      {tradingSystems.map((system, index) => (
+        <div key={index} className="col-md-4">
+          {/* Container without card classes */}
+          <div className={`h-100 bg-white text-black rounded-md p-4 border-start border-${system.color} border-5`}>
+            {/* Header Section */}
+            <div className="d-flex align-items-center mb-3">
+              <div className={`bg-${system.color} bg-opacity-10 p-3 rounded-circle me-3`}>
+                <i className={`${system.icon} text-${system.color} fs-4`}></i>
+              </div>
+              <div>
+                <h5 className="fw-bold mb-1 text-black">{system.name}</h5>
+                <p className="text-black small mb-0">{system.description}</p>
               </div>
             </div>
-          ))}
-        </div>
-
-        {/* Featured Systems - Clean design without list dots */}
-        <div className="row mb-5">
-          <div className="col-lg-10 mx-auto">
-            <h3 className="text-center mb-4 fw-bold text-white">Featured Trading Systems</h3>
-            <div className="row g-4">
-              {tradingSystems.map((system, index) => (
-                <div key={index} className="col-md-4">
-                  <div className={`card border-${system.color} border-top-0 border-end-0 border-bottom-0 border-3 h-100 bg-white text-black`}>
-                    <div className="card-body p-4">
-                      <div className="d-flex align-items-center mb-3">
-                        <div className={`bg-${system.color} bg-opacity-10 p-3 rounded-circle me-3`}>
-                          <i className={`${system.icon} text-${system.color} fs-4`}></i>
-                        </div>
-                        <div>
-                          <h5 className="card-title fw-bold mb-1 text-black">{system.name}</h5>
-                          <p className="text-black small mb-0">{system.description}</p>
-                        </div>
-                      </div>
-                      
-                      {/* Clean feature display without list dots */}
-                      <div className="mt-4 pt-3 border-top border-white border-opacity-10">
-                        <div className="row g-2">
-                          {system.features.map((feature, fIndex) => (
-                         <div key={fIndex} className="col-12">
-  <div className="d-flex align-items-center bg-white bg-opacity-50 p-2 rounded border border-black">
-    <i className="fas fa-check-circle text-success me-2 fs-6"></i>
-    <span className="text-black small">{feature}</span>
-  </div>
-</div>
-                          ))}
-                        </div>
-                      </div>
+            
+            {/* Features Section */}
+            <div className="mt-4 pt-3 border-top border-secondary border-opacity-25">
+              <div className="row g-2">
+                {system.features.map((feature, fIndex) => (
+                  <div key={fIndex} className="col-12">
+                    <div className="d-flex align-items-center bg-white bg-opacity-50 p-2 rounded border border-secondary">
+                      <i className="fas fa-check-circle text-success me-2 fs-6"></i>
+                      <span className="text-black small">{feature}</span>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
+      ))}
+    </div>
+  </div>
+</div>
 
  
         

@@ -118,83 +118,67 @@ const LatestSection = () => {
             </div>
           </div>
         </div>
+ 
 
-        {/* Category Filter */}
-        <div className="row justify-content-center mb-4">
-          <div className="col-12 col-lg-10">
-            <div className="d-flex flex-wrap justify-content-center gap-1 gap-lg-2 mb-3 mb-lg-4">
-              {categories.map((category) => (
-                <button
-                  key={category.id}
-                  className="btn btn-outline-primary btn-sm px-2 px-lg-3 py-1 py-lg-2"
-                >
-                  <i className={`bi ${category.icon} me-1 me-lg-2`}></i>
-                  <span className="d-none d-sm-inline">{category.name}</span>
-                  <span className="badge bg-primary ms-1 ms-lg-2">{category.count}</span>
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Updates Grid - RESPONSIVE */}
-        <div className="row justify-content-center position-relative">
-          <div className="col-12 col-lg-10">
-            <div className="row g-3 g-lg-4 mb-0"> {/* Added mb-0 to remove bottom margin */}
-              {updates.map((update) => (
-                <div key={update.id} className="col-12 col-md-6 col-lg-4">
-                  <div className="card h-100 border-secondary bg-white hover-lift transition-all">
-                    <div className="card-body p-3 p-lg-4 d-flex flex-column">
-                      <div className="d-flex justify-content-between align-items-start mb-2 mb-lg-3">
-                        <div className="d-flex align-items-center">
-                          <div className={`bg-${update.color} bg-opacity-10 p-1 p-lg-2 rounded-circle me-2 me-lg-3`}>
-                            <i className={`bi ${update.icon} text-${update.color} fs-5`}></i>
-                          </div>
-                          <span className={`badge bg-${update.color} bg-opacity-10 text-${update.color}`}>
-                            {update.category}
-                          </span>
-                        </div>
-                        <span className="badge bg-primary bg-opacity-10 text-primary">
-                          {update.badge}
-                        </span>
-                      </div>
-                      
-                      <h4 className="fw-bold mb-2 mb-lg-3 text-black fs-5 fs-lg-4">{update.title}</h4>
-                      <p className="text-black mb-3 mb-lg-4 flex-grow-1">{update.description}</p>
-                      
-                      <div className="mt-auto">
-                        <div className="d-flex flex-wrap gap-1 gap-lg-2 mb-2 mb-lg-3">
-                          {update.tags.map((tag, index) => (
-                            <span key={index} className="badge bg-dark border border-secondary text-white-50 small">
-                              #{tag}
-                            </span>
-                          ))}
-                        </div>
-                        <div className="d-flex justify-content-between align-items-center pt-2 border-top border-secondary">
-                          <div className="text-black small">{update.date}</div>
-                          <button className="btn btn-link text-decoration-none p-0 text-primary">
-                            <i className="bi bi-arrow-right-circle me-1"></i>
-                            <span className="d-none d-sm-inline">Learn More</span>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
+      {/* Updates Grid - RESPONSIVE */}
+<div className="row justify-content-center position-relative">
+  <div className="col-12 col-lg-10">
+    <div className="row g-3 g-lg-4 mb-0">
+      {updates.map((update) => (
+        <div key={update.id} className="col-12 col-md-6 col-lg-4">
+          {/* Added border and rounded classes here */}
+          <div className="h-100 border border-secondary bg-white hover-lift transition-all rounded-3">
+            <div className="p-3 p-lg-4 d-flex flex-column">
+              <div className="d-flex justify-content-between align-items-start mb-2 mb-lg-3">
+                <div className="d-flex align-items-center">
+                  <div className={`bg-${update.color} bg-opacity-10 p-1 p-lg-2 rounded-circle me-2 me-lg-3`}>
+                    <i className={`bi ${update.icon} text-${update.color} fs-5`}></i>
                   </div>
+                  <span className={`badge bg-${update.color} bg-opacity-10 text-${update.color} rounded-pill`}>
+                    {update.category}
+                  </span>
                 </div>
-              ))}
+                <span className="badge bg-primary bg-opacity-10 text-primary rounded-pill">
+                  {update.badge}
+                </span>
+              </div>
+              
+              <h4 className="fw-bold mb-2 mb-lg-3 text-black fs-5 fs-lg-4">{update.title}</h4>
+              <p className="text-black mb-3 mb-lg-4 flex-grow-1">{update.description}</p>
+              
+              <div className="mt-auto">
+                <div className="d-flex flex-wrap gap-1 gap-lg-2 mb-2 mb-lg-3">
+                  {update.tags.map((tag, index) => (
+                    <span key={index} className="badge bg-dark border border-secondary text-white-50 small rounded-pill">
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+                <div className="d-flex justify-content-between align-items-center pt-2 border-top border-secondary">
+                  <div className="text-black small">{update.date}</div>
+                  <button className="btn btn-link text-decoration-none p-0 text-primary">
+                    <i className="bi bi-arrow-right-circle me-1"></i>
+                    <span className="d-none d-sm-inline">Learn More</span>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-          
-          {/* Extended black background container - FIXED POSITIONING */}
-          <div className="position-absolute start-0 end-0" style={{
-            bottom: '-2rem', // Adjust this value to control how far it extends
-            height: '4rem',
-            zIndex: -1,
-            overflow: 'hidden'
-          }}>
-            <div className="bg-dark w-100 h-100"></div>
-          </div>
         </div>
+      ))}
+    </div>
+  </div>
+  
+  {/* Extended black background container - FIXED POSITIONING */}
+  <div className="position-absolute start-0 end-0" style={{
+    bottom: '-2rem',
+    height: '4rem',
+    zIndex: -1,
+    overflow: 'hidden'
+  }}>
+    <div className="bg-dark w-100 h-100"></div>
+  </div>
+</div>
 
         {/* Additional spacing below (optional) */}
         <div className="bg-dark" style={{ height: '2rem' }}></div>

@@ -217,7 +217,7 @@ const FaqSection = () => {
         </p>
       </div>
 
-      <div className="d-flex flex-column flex-md-row justify-content-center align-items-center gap-1 mb-2">
+      <div className="d-flex flex-row flex-md-row justify-content-center align-items-center gap-1 mb-2">
         <button className="btn btn-outline-secondary px-2 py-1">
           <i className="bi bi-chat-dots"></i> Chat
         </button>
