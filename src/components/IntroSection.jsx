@@ -16,17 +16,17 @@ const IntroSection = ({ count, setCount }) => {
   ];
 
   return (
-    <section className="bg-black text-white overflow-hidden">
-      <div className="container py-5">
-        {/* Centered Header */}
-        <div className="row justify-content-center text-center mb-5">
+    <section className="bg-black text-white overflow-hidden py-5">
+      <div className="container py-0 "> {/* Changed from py-5 to py-0 */}
+        {/* Centered Header - Reduced margins */}
+        <div className="row justify-content-center text-center mb-4"> {/* Reduced from mb-5 */}
           <div className="col-lg-8">
-            <h1 className="display-5 fw-bold mb-3 text-white">
+            <h1 className="display-5 fw-bold mb-2 text-white"> {/* Reduced from mb-3 */}
               Advanced Trading Bot
               <span className="text-primary"> Platform</span>
             </h1>
             
-            <p className="lead text-white-50 mb-4">
+            <p className="lead text-white-50 mb-3"> {/* Reduced from mb-4 */}
               Automate your trading strategies with our high-performance bot that executes trades 24/7 
               across multiple exchanges. Experience institutional-grade technology made accessible for 
               every trader.
@@ -34,14 +34,14 @@ const IntroSection = ({ count, setCount }) => {
           </div>
         </div>
 
-        {/* Centered Stats */}
-        <div className="row justify-content-center text-center mb-5">
+        {/* Centered Stats - Reduced margins */}
+        <div className="row justify-content-center text-center mb-4"> {/* Reduced from mb-5 */}
           <div className="col-lg-10">
-            <div className="row g-4 justify-content-center">
+            <div className="row g-3 justify-content-center"> {/* Reduced from g-4 */}
               {stats.map((stat, index) => (
                 <div key={index} className="col-6 col-md-3">
-                  <div className="p-3">
-                    <div className={`display-6 fw-bold text-${stat.color} mb-2`}>
+                  <div className="p-2"> {/* Reduced from p-3 */}
+                    <div className={`display-6 fw-bold text-${stat.color} mb-1`}> {/* Reduced from mb-2 */}
                       {stat.value}
                     </div>
                     <div className="text-white-50 small">
@@ -55,18 +55,18 @@ const IntroSection = ({ count, setCount }) => {
           </div>
         </div>
 
-        {/* Centered Features */}
-        <div className="row justify-content-center text-center mb-5">
+        {/* Centered Features - Reduced margins */}
+        <div className="row justify-content-center text-center mb-4"> {/* Reduced from mb-5 */}
           <div className="col-lg-10">
-            <div className="row g-4">
+            <div className="row g-3"> {/* Reduced from g-4 */}
               {features.map((feature, index) => (
                 <div key={index} className="col-md-6">
-                  <div className="d-flex align-items-start p-3 h-100">
-                    <div className="bg-primary bg-opacity-10 p-3 rounded-circle me-3 flex-shrink-0">
+                  <div className="d-flex align-items-start p-2 h-100"> {/* Reduced from p-3 */}
+                    <div className="bg-primary bg-opacity-10 p-2 rounded-circle me-3 flex-shrink-0"> {/* Reduced from p-3 */}
                       <i className={`${feature.icon} text-primary fs-5`}></i>
                     </div>
                     <div className="text-start">
-                      <h5 className="fw-bold text-white mb-2">{feature.title}</h5>
+                      <h5 className="fw-bold text-white mb-1">{feature.title}</h5> {/* Reduced from mb-2 */}
                       <p className="text-white-50 small mb-0">{feature.description}</p>
                     </div>
                   </div>
@@ -76,30 +76,40 @@ const IntroSection = ({ count, setCount }) => {
           </div>
         </div>
 
-        {/* Centered CTA Buttons */}
-        <div className="row justify-content-center text-center mb-5">
+        {/* Centered CTA Buttons - Reduced margins */}
+        <div className="row justify-content-center text-center">
           <div className="col-lg-8">
-            <div className="d-flex flex-column flex-md-row justify-content-center gap-3">
-              <button className="btn btn-primary btn-lg px-5 py-3 fw-bold">
+            <div className="d-flex flex-column flex-md-row justify-content-center gap-2"> {/* Reduced from gap-3 */}
+              <button className="btn btn-primary btn-lg px-4 py-2 fw-bold"> {/* Reduced from px-5 py-3 */}
                 <i className="fas fa-rocket me-2"></i>
                 Start Free Trial
               </button>
-              <button className="btn btn-outline-light btn-lg px-5 py-3 fw-bold">
+              <button className="btn btn-outline-light btn-lg px-4 py-2 fw-bold"> {/* Reduced from px-5 py-3 */}
                 <i className="fas fa-play-circle me-2"></i>
                 Watch Demo
               </button>
             </div>
           </div>
         </div>
-
-      
       </div>
 
-      {/* CSS Styling */}
+      {/* CSS Styling - Add section padding control */}
       <style jsx>{`
         .bg-black {
           background-color: #000000 !important;
         }
+        
+        /* Remove section padding */
+        section {
+          padding-top: 0 !important;
+          padding-bottom: 0 !important;
+        }
+        
+        /* Or for minimal padding */
+        /* section {
+          padding-top: 1rem !important;
+          padding-bottom: 1rem !important;
+        } */
         
         .bg-dark {
           background-color: #111111 !important;
@@ -115,12 +125,6 @@ const IntroSection = ({ count, setCount }) => {
         
         .border-opacity-10 {
           border-color: rgba(255, 255, 255, 0.1) !important;
-        }
-        
-        /* Interactive card styling */
-        .position-relative .badge {
-          position: relative;
-          top: -1px;
         }
         
         /* Animation for button click */
@@ -163,11 +167,6 @@ const IntroSection = ({ count, setCount }) => {
         
         .bg-dark:hover {
           box-shadow: 0 10px 30px rgba(13, 110, 253, 0.15);
-        }
-        
-        /* Remove any extra spacing */
-        section {
-          padding-bottom: 1rem !important;
         }
         
         .rounded-3 {
