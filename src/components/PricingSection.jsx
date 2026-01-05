@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
 const PricingSection = () => {
+  const [isYearly, setIsYearly] = useState(false);
+  
   const plans = [
     {
       title: "Starter",
       subtitle: "For individual traders",
       price: "$97",
+      priceYearly: "$77",
       period: "/month",
       popular: false,
       color: "primary",
@@ -28,6 +31,7 @@ const PricingSection = () => {
       title: "Professional",
       subtitle: "For serious traders",
       price: "$247",
+      priceYearly: "$197",
       period: "/month",
       popular: true,
       color: "success",
@@ -51,6 +55,7 @@ const PricingSection = () => {
       title: "Enterprise",
       subtitle: "For institutions & teams",
       price: "$497",
+      priceYearly: "$397",
       period: "/month",
       popular: false,
       color: "warning",
@@ -93,7 +98,7 @@ const PricingSection = () => {
     },
   ];
 
-  const yearlyDiscount = 20; // 20% discount for annual billing
+  const yearlyDiscount = 20;
   const comparisonFeatures = [
     { name: "Exchange Connections", key: 0 },
     { name: "Trading Strategies", key: 1 },
@@ -107,9 +112,30 @@ const PricingSection = () => {
     { name: "White-label", key: 9 },
   ];
 
+  // Performance Dashboard Data
+  const dashboardStats = [
+    { label: "Active Users", value: "10,248", change: "+12%", icon: "bi-people", color: "primary" },
+    { label: "Monthly Trades", value: "2.4M", change: "+8%", icon: "bi-graph-up", color: "success" },
+    { label: "Avg. ROI", value: "8.5%", change: "+1.2%", icon: "bi-cash-stack", color: "warning" },
+    { label: "Uptime", value: "99.9%", change: "+0.1%", icon: "bi-server", color: "info" },
+  ];
+
+  // Smooth scroll function
+  const scrollToComparison = (e) => {
+    e.preventDefault();
+    const element = document.getElementById('comparison-table');
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start' 
+      });
+    }
+  };
+
   return (
     <section className="py-5 bg-white text-dark">
       <div className="container py-5">
+      
         {/* Header */}
         <div className="row mb-5">
           <div className="col-lg-8 mx-auto text-center">
@@ -120,13 +146,15 @@ const PricingSection = () => {
             
             {/* Billing Toggle */}
             <div className="d-flex justify-content-center align-items-center mb-5">
-              <span className="me-3 text-dark">Monthly</span>
+              <span className={`me-3 ${isYearly ? 'text-muted' : 'text-dark fw-bold'}`}>Monthly</span>
               <div className="form-check form-switch">
                 <input 
                   className="form-check-input" 
                   type="checkbox" 
                   role="switch" 
                   id="billingSwitch" 
+                  checked={isYearly}
+                  onChange={() => setIsYearly(!isYearly)}
                   style={{ width: '3rem', height: '1.5rem' }}
                 />
                 <label className="form-check-label ms-3 text-dark" htmlFor="billingSwitch">
@@ -165,11 +193,11 @@ const PricingSection = () => {
           </div>
         </div>
 
-        {/* Pricing Cards */}
+        {/* Pricing Cards - WITH SMOOTH SCROLL */}
         <div className="row g-4 mb-5">
           {plans.map((plan, index) => (
             <div key={index} className="col-lg-3 col-md-6 d-flex">
-              <div className={`card border shadow-lg w-100 bg-white text-dark h-100 ${plan.popular ? 'border-success border-3' : 'border-light'}`}>
+              <div className={`card border shadow-lg w-100 bg-white text-dark h-100 ${plan.popular ? 'border-success border-3' : 'border-dark'}`}>
                 {plan.popular && (
                   <div className="position-absolute top-0 start-50 translate-middle mt-3">
                     <span className="badge bg-success rounded-pill px-3 py-2 shadow-sm">
@@ -190,8 +218,15 @@ const PricingSection = () => {
                         <div className="fs-1 fw-bold text-dark">Custom</div>
                       ) : (
                         <>
-                          <span className="fs-1 fw-bold text-dark">{plan.price}</span>
+                          <span className="fs-1 fw-bold text-dark">
+                            {isYearly && plan.priceYearly ? plan.priceYearly : plan.price}
+                          </span>
                           <span className="text-dark">{plan.period}</span>
+                          {isYearly && plan.priceYearly && (
+                            <div className="text-muted small text-decoration-line-through">
+                              {plan.price}{plan.period}
+                            </div>
+                          )}
                         </>
                       )}
                     </div>
@@ -211,17 +246,23 @@ const PricingSection = () => {
                   <div className="mb-4 flex-grow-1">
                     {plan.features.map((feature, fIndex) => (
                       <div key={fIndex} className="d-flex align-items-center mb-3">
-                        {feature.available ? (
-                          <i className="fas fa-check-circle text-success me-3 fs-5"></i>
-                        ) : (
-                          <i className="fas fa-times-circle text-secondary me-3 fs-5"></i>
-                        )}
-                        <span className={feature.available ? "text-dark" : "text-dark-50"}>{feature.text}</span>
+                        {/* Fixed dot styling */}
+                        <div 
+                          className={`rounded-circle me-3 ${feature.available ? 'bg-dark' : 'bg-white border border-dark border-1'}`}
+                          style={{ 
+                            width: '8px',
+                            height: '8px',
+                            flexShrink: 0 
+                          }}
+                        />
+                        <span className={feature.available ? "text-dark" : "text-secondary"}>
+                          {feature.text}
+                        </span>
                       </div>
                     ))}
                   </div>
                   
-                  {/* CTA Button */}
+                  {/* CTA Button with Scroll Link */}
                   <div className="mt-auto">
                     <button 
                       className={`btn btn-lg w-100 ${plan.custom || plan.enterprise ? 'btn-outline-dark' : `btn-${plan.color}`} fw-bold py-3`}
@@ -230,13 +271,16 @@ const PricingSection = () => {
                       {plan.custom && <i className="fas fa-arrow-right ms-2"></i>}
                     </button>
                     
-                    {!plan.custom && !plan.enterprise && (
-                      <div className="text-center mt-3">
-                        <a href="#!" className="text-dark small text-decoration-none">
-                          <i className="fas fa-info-circle me-1"></i> View detailed comparison
-                        </a>
-                      </div>
-                    )}
+                    {/* View Comparison Link - Shows on ALL plans */}
+                    <div className="text-center mt-3">
+                      <a 
+                        href="#comparison-table" 
+                        className="text-dark small text-decoration-none"
+                        onClick={scrollToComparison}
+                      >
+                        <i className="fas fa-info-circle me-1"></i> View detailed comparison
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -244,12 +288,100 @@ const PricingSection = () => {
           ))}
         </div>
 
-       
-            
-     
-   
+        {/* Feature Comparison Table - WITH ID FOR SCROLLING */}
+        <div className="row justify-content-center mt-5" id="comparison-table">
+          <div className="col-lg-10">
+            <div className="border rounded-3 p-4 bg-white shadow-sm">
+              <h4 className="fw-bold text-dark text-center mb-4">Detailed Feature Comparison</h4>
+              <div className="table-responsive">
+                <table className="table table-hover align-middle">
+                  <thead>
+                    <tr>
+                      <th className="fw-bold text-dark border-bottom">Features</th>
+                      {plans.map((plan, index) => (
+                        <th key={index} className={`text-center fw-bold ${plan.popular ? 'text-success' : 'text-dark'} border-bottom`}>
+                          {plan.title}
+                          {plan.popular && (
+                            <div className="badge bg-success bg-opacity-10 text-success rounded-pill mt-1">
+                              Popular
+                            </div>
+                          )}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {comparisonFeatures.map((feature, index) => (
+                      <tr key={index}>
+                        <td className="fw-medium text-dark">{feature.name}</td>
+                        {plans.map((plan, pIndex) => {
+                          const planFeature = plan.features[feature.key];
+                          return (
+                            <td key={pIndex} className="text-center">
+                              {planFeature ? (
+                                <div className="d-flex justify-content-center">
+                                  {/* Fixed dot styling to match cards */}
+                                  <div 
+                                    className={`rounded-circle ${planFeature.available ? 'bg-dark' : 'bg-white border border-dark border-1'}`}
+                                    style={{ 
+                                      width: '8px', 
+                                      height: '8px'
+                                    }}
+                                  />
+                                </div>
+                              ) : (
+                                <span className="text-muted">-</span>
+                              )}
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
 
-  
+        {/* FAQ Section */}
+        <div className="row justify-content-center mt-5">
+          <div className="col-lg-8">
+            <div className="text-center">
+              <h5 className="fw-bold text-dark mb-4">Frequently Asked Questions</h5>
+              <div className="row g-3">
+                <div className="col-md-6">
+                  <div className="text-start">
+                    <div className="d-flex align-items-start mb-2">
+                      <div className="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3"
+                           style={{ width: '24px', height: '24px', flexShrink: 0 }}>
+                        <i className="fas fa-question text-primary" style={{ fontSize: '0.8rem' }}></i>
+                      </div>
+                      <div>
+                        <div className="fw-bold small text-dark">Can I switch plans later?</div>
+                        <small className="text-muted">Yes, you can upgrade or downgrade anytime.</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="text-start">
+                    <div className="d-flex align-items-start mb-2">
+                      <div className="bg-success bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3"
+                           style={{ width: '24px', height: '24px', flexShrink: 0 }}>
+                        <i className="fas fa-question text-success" style={{ fontSize: '0.8rem' }}></i>
+                      </div>
+                      <div>
+                        <div className="fw-bold small text-dark">Is there a free trial?</div>
+                        <small className="text-muted">Yes, all paid plans include a free trial period.</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       
       {/* Add CSS for custom styling */}
@@ -305,6 +437,16 @@ const PricingSection = () => {
         .table-responsive {
           border-radius: 0.5rem;
           overflow: hidden;
+        }
+        
+        /* Smooth scrolling for the whole page */
+        html {
+          scroll-behavior: smooth;
+        }
+        
+        /* Hover effect for comparison link */
+        a[href="#comparison-table"]:hover {
+          color: #0d6efd !important;
         }
       `}</style>
     </section>
