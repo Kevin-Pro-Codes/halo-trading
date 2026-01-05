@@ -95,7 +95,7 @@ function App() {
 
         {/* Performance Metrics */}
        
-       <PerformanceSection/>
+       {/*<PerformanceSection/>*/}
 
         {/* BTC/USD Converter */}
        
@@ -108,7 +108,7 @@ function App() {
  {/* Gallery */}
 
 
-<GallerySection/>
+{/*<GallerySection/>*/}
 
 
         {/* Pricing */}

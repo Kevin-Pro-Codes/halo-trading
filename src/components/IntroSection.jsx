@@ -1,52 +1,125 @@
 import React from 'react';
 
-const IntroSection = ({ count, setCount }) => {
+const IntroSection = () => {
   const stats = [
-    { value: "99.9%", label: "Uptime", icon: "fas fa-server", color: "primary" },
-    { value: "50+", label: "Exchanges", icon: "fas fa-exchange-alt", color: "success" },
-    { value: "0.2s", label: "Latency", icon: "fas fa-bolt", color: "warning" },
-    { value: "10k+", label: "Active Users", icon: "fas fa-users", color: "info" }
+    { 
+      value: "100+", 
+      label: "Expert Advisors", 
+      icon: "fas fa-robot", 
+      color: "primary",
+      description: "Ready-to-use MQL5 trading bots"
+    },
+    { 
+      value: "50+", 
+      label: "Custom Indicators", 
+      icon: "fas fa-chart-bar", 
+      color: "success",
+      description: "MQL5 technical indicators"
+    },
+    { 
+      value: "0.2s", 
+      label: "MT5 Execution", 
+      icon: "fas fa-bolt", 
+      color: "warning",
+      description: "Average trade execution speed"
+    },
+    { 
+      value: "10k+", 
+      label: "MQL5 Developers", 
+      icon: "fas fa-code", 
+      color: "info",
+      description: "Active platform users"
+    }
   ];
 
   const features = [
-    { icon: "fas fa-brain", title: "AI-Powered", description: "Machine learning algorithms adapt to market conditions" },
-    { icon: "fas fa-shield-alt", title: "Secure", description: "Bank-level encryption and multi-factor authentication" },
-    { icon: "fas fa-chart-line", title: "Multi-Strategy", description: "Run multiple trading strategies simultaneously" },
-    { icon: "fas fa-mobile-alt", title: "Mobile Ready", description: "Monitor and control from anywhere via mobile app" }
+    { 
+      icon: "fas fa-code", 
+      title: "MQL5 Framework", 
+      description: "Comprehensive Expert Advisor development framework with full MQL5 API support"
+    },
+    { 
+      icon: "fas fa-vial", 
+      title: "Advanced Backtesting", 
+      description: "MetaTrader 5 Strategy Tester integration with genetic optimization"
+    },
+    { 
+      icon: "fas fa-sync-alt", 
+      title: "Signal Copying", 
+      description: "Copy trades from successful MQL5 strategies and signal providers"
+    },
+    { 
+      icon: "fas fa-shield-alt", 
+      title: "Risk Management", 
+      description: "Built-in position sizing, stop-loss, and money management modules"
+    }
+  ];
+
+  const mql5Highlights = [
+    "✓ Full MQL5 API Support",
+    "✓ MetaTrader 5 Integration",
+    "✓ Strategy Tester Compatible",
+    "✓ Real-time Market Data",
+    "✓ Automated Order Execution",
+    "✓ Custom Indicator Support"
   ];
 
   return (
     <section className="bg-black text-white overflow-hidden py-5">
-      <div className="container py-0 "> {/* Changed from py-5 to py-0 */}
-        {/* Centered Header - Reduced margins */}
-        <div className="row justify-content-center text-center mb-4"> {/* Reduced from mb-5 */}
-          <div className="col-lg-8">
-            <h1 className="display-5 fw-bold mb-2 text-white"> {/* Reduced from mb-3 */}
-              Advanced Trading Bot
-              <span className="text-primary"> Platform</span>
-            </h1>
+      <div className="container py-0">
+        {/* Header with MQL5 focus */}
+        <div className="row justify-content-center text-center mb-4">
+          <div className="col-lg-10">
+            <div className="d-flex align-items-center justify-content-center mb-3">
+              <i className="fas fa-meta text-primary fs-1 me-3"></i>
+              <div>
+                <h1 className="display-5 fw-bold mb-2 text-white">
+                  MQL5 Trading Bot
+                  <span className="text-primary"> Platform</span>
+                </h1>
+                <div className="d-flex flex-wrap justify-content-center gap-2 mb-3">
+                  <span className="badge bg-primary bg-opacity-25 text-primary px-3 py-2">
+                    <i className="fas fa-robot me-2"></i>
+                    Expert Advisor Framework
+                  </span>
+                  <span className="badge bg-success bg-opacity-25 text-success px-3 py-2">
+                    <i className="fas fa-chart-line me-2"></i>
+                    MetaTrader 5 Integration
+                  </span>
+                  <span className="badge bg-warning bg-opacity-25 text-warning px-3 py-2">
+                    <i className="fas fa-vial me-2"></i>
+                    Advanced Backtesting
+                  </span>
+                </div>
+              </div>
+            </div>
             
-            <p className="lead text-white-50 mb-3"> {/* Reduced from mb-4 */}
-              Automate your trading strategies with our high-performance bot that executes trades 24/7 
-              across multiple exchanges. Experience institutional-grade technology made accessible for 
-              every trader.
+            <p className="lead text-white-50 mb-4">
+              Build, test, and deploy sophisticated trading bots using MQL5 with our comprehensive framework. 
+              Create Expert Advisors that integrate seamlessly with MetaTrader 5 platform.
             </p>
           </div>
         </div>
 
-        {/* Centered Stats - Reduced margins */}
-        <div className="row justify-content-center text-center mb-4"> {/* Reduced from mb-5 */}
-          <div className="col-lg-10">
-            <div className="row g-3 justify-content-center"> {/* Reduced from g-4 */}
+        {/* MQL5 Stats with descriptions */}
+        <div className="row justify-content-center text-center mb-4">
+          <div className="col-lg-12">
+            <div className="row g-3 justify-content-center">
               {stats.map((stat, index) => (
                 <div key={index} className="col-6 col-md-3">
-                  <div className="p-2"> {/* Reduced from p-3 */}
-                    <div className={`display-6 fw-bold text-${stat.color} mb-1`}> {/* Reduced from mb-2 */}
+                  <div className="p-3 border border-secondary rounded-3 bg-gradient-to-bottom"
+                    style={{
+                      background: 'linear-gradient(180deg, #1a1a1a 0%, #000 100%)'
+                    }}>
+                    <div className={`display-6 fw-bold text-${stat.color} mb-2`}>
                       {stat.value}
                     </div>
+                    <div className="d-flex align-items-center justify-content-center mb-2">
+                      <i className={`${stat.icon} text-${stat.color} me-2`}></i>
+                      <div className="text-white fw-bold">{stat.label}</div>
+                    </div>
                     <div className="text-white-50 small">
-                      <i className={`${stat.icon} me-2`}></i>
-                      {stat.label}
+                      {stat.description}
                     </div>
                   </div>
                 </div>
@@ -55,20 +128,25 @@ const IntroSection = ({ count, setCount }) => {
           </div>
         </div>
 
-        {/* Centered Features - Reduced margins */}
-        <div className="row justify-content-center text-center mb-4"> {/* Reduced from mb-5 */}
+        {/* MQL5 Platform Features */}
+        <div className="row justify-content-center text-center mb-4">
           <div className="col-lg-10">
-            <div className="row g-3"> {/* Reduced from g-4 */}
+            <h3 className="fw-bold text-white mb-4">
+              <i className="fas fa-cogs text-primary me-2"></i>
+              MQL5 Platform Features
+            </h3>
+            <div className="row g-3">
               {features.map((feature, index) => (
-                <div key={index} className="col-md-6">
-                  <div className="d-flex align-items-start p-2 h-100"> {/* Reduced from p-3 */}
-                    <div className="bg-primary bg-opacity-10 p-2 rounded-circle me-3 flex-shrink-0"> {/* Reduced from p-3 */}
-                      <i className={`${feature.icon} text-primary fs-5`}></i>
+                <div key={index} className="col-md-6 col-lg-3">
+                  <div className="border border-secondary rounded-3 p-3 h-100 bg-gradient-to-bottom"
+                    style={{
+                      background: 'linear-gradient(180deg, #1a1a1a 0%, #000 100%)'
+                    }}>
+                    <div className="bg-primary bg-opacity-10 p-2 rounded-circle d-inline-flex mb-3">
+                      <i className={`${feature.icon} text-primary fs-4`}></i>
                     </div>
-                    <div className="text-start">
-                      <h5 className="fw-bold text-white mb-1">{feature.title}</h5> {/* Reduced from mb-2 */}
-                      <p className="text-white-50 small mb-0">{feature.description}</p>
-                    </div>
+                    <h5 className="fw-bold text-white mb-2">{feature.title}</h5>
+                    <p className="text-white-50 small mb-0">{feature.description}</p>
                   </div>
                 </div>
               ))}
@@ -76,43 +154,97 @@ const IntroSection = ({ count, setCount }) => {
           </div>
         </div>
 
-        {/* Centered CTA Buttons - Reduced margins */}
+        {/* MQL5 Technical Highlights */}
+        <div className="row justify-content-center mb-4">
+          <div className="col-lg-8">
+            <div className="border border-secondary rounded-3 p-4 bg-gradient-to-bottom"
+              style={{
+                background: 'linear-gradient(180deg, #1a1a1a 0%, #000 100%)'
+              }}>
+              <h4 className="fw-bold text-white mb-3">
+                <i className="fas fa-check-circle text-success me-2"></i>
+                MQL5 Platform Capabilities
+              </h4>
+              <div className="row">
+                {mql5Highlights.map((highlight, index) => (
+                  <div key={index} className="col-md-6 mb-2">
+                    <div className="d-flex align-items-center">
+                      <i className="fas fa-check text-success me-2"></i>
+                      <span className="text-white-50">{highlight}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* CTA Buttons - MQL5 Focused */}
         <div className="row justify-content-center text-center">
           <div className="col-lg-8">
-            <div className="d-flex flex-column flex-md-row justify-content-center gap-2"> {/* Reduced from gap-3 */}
-              <button className="btn btn-primary btn-lg px-4 py-2 fw-bold"> {/* Reduced from px-5 py-3 */}
-                <i className="fas fa-rocket me-2"></i>
-                Start Free Trial
+            <div className="d-flex flex-column flex-md-row justify-content-center gap-3">
+              <button className="btn btn-primary btn-lg px-4 py-3 fw-bold d-flex align-items-center justify-content-center">
+                <i className="fas fa-download me-3"></i>
+                <div className="text-start">
+                  <div>Download MQL5 Documentation</div>
+                  <small className="opacity-75">Start building Expert Advisors</small>
+                </div>
               </button>
-              <button className="btn btn-outline-light btn-lg px-4 py-2 fw-bold"> {/* Reduced from px-5 py-3 */}
-                <i className="fas fa-play-circle me-2"></i>
-                Watch Demo
+              <button className="btn btn-outline-light btn-lg px-4 py-3 fw-bold d-flex align-items-center justify-content-center">
+                <i className="fas fa-play-circle me-3"></i>
+                <div className="text-start">
+                  <div>View MQL5 Tutorials</div>
+                  <small className="opacity-75">Learn Expert Advisor development</small>
+                </div>
               </button>
+            </div>
+            
+            {/* Quick links */}
+            <div className="mt-4 d-flex flex-wrap justify-content-center gap-2">
+              <a href="#" className="text-white-50 small text-decoration-none me-3">
+                <i className="fas fa-book me-1"></i>
+                MQL5 Documentation
+              </a>
+              <a href="#" className="text-white-50 small text-decoration-none me-3">
+                <i className="fas fa-code me-1"></i>
+                API Reference
+              </a>
+              <a href="#" className="text-white-50 small text-decoration-none">
+                <i className="fas fa-users me-1"></i>
+                Developer Community
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* MetaTrader 5 Compatibility Badge */}
+        <div className="row justify-content-center mt-4">
+          <div className="col-lg-6 text-center">
+            <div className="border border-primary border-opacity-25 rounded-3 p-3 d-inline-block">
+              <div className="d-flex align-items-center justify-content-center">
+                <i className="fas fa-meta text-primary fs-2 me-3"></i>
+                <div>
+                  <div className="text-white fw-bold">MetaTrader 5 Compatible</div>
+                  <div className="text-white-50 small">Seamless integration with MT5 platform</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* CSS Styling - Add section padding control */}
+      {/* CSS Styling */}
       <style jsx>{`
         .bg-black {
           background-color: #000000 !important;
         }
         
-        /* Remove section padding */
-        section {
-          padding-top: 0 !important;
-          padding-bottom: 0 !important;
+        .bg-gradient-to-bottom {
+          background: linear-gradient(180deg, #1a1a1a 0%, #000 100%);
         }
         
-        /* Or for minimal padding */
-        /* section {
-          padding-top: 1rem !important;
-          padding-bottom: 1rem !important;
-        } */
-        
-        .bg-dark {
-          background-color: #111111 !important;
+        .border-secondary {
+          border-color: #2d3748 !important;
         }
         
         .border-primary {
@@ -123,66 +255,83 @@ const IntroSection = ({ count, setCount }) => {
           background-color: rgba(13, 110, 253, 0.1) !important;
         }
         
-        .border-opacity-10 {
-          border-color: rgba(255, 255, 255, 0.1) !important;
+        .border-opacity-25 {
+          border-color: rgba(13, 110, 253, 0.25) !important;
         }
         
-        /* Animation for button click */
-        @keyframes gentlePulse {
-          0% { transform: scale(1); }
-          50% { transform: scale(0.98); }
-          100% { transform: scale(1); }
+        /* Enhanced card hover effects */
+        [class*="bg-gradient-to-bottom"] {
+          transition: all 0.3s ease;
         }
         
-        .btn-primary:active {
-          animation: gentlePulse 0.2s ease;
+        [class*="bg-gradient-to-bottom"]:hover {
+          transform: translateY(-5px);
+          border-color: #0d6efd !important;
+          box-shadow: 0 10px 25px rgba(13, 110, 253, 0.15);
         }
         
-        /* Hover effects */
+        /* Button animations */
         .btn-primary {
           transition: all 0.3s ease;
+          background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+          border: none;
         }
         
         .btn-primary:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 5px 15px rgba(13, 110, 253, 0.4);
+          transform: translateY(-3px);
+          box-shadow: 0 10px 20px rgba(13, 110, 253, 0.3);
+          background: linear-gradient(135deg, #0a58ca 0%, #084298 100%);
         }
         
         .btn-outline-light:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 5px 15px rgba(255, 255, 255, 0.15);
+          transform: translateY(-3px);
+          box-shadow: 0 10px 20px rgba(255, 255, 255, 0.15);
+          background: rgba(255, 255, 255, 0.1);
         }
         
-        /* Feature items hover */
-        .d-flex.align-items-start:hover .bg-primary.bg-opacity-10 {
+        /* Feature icon animation */
+        .bg-primary.bg-opacity-10 {
+          transition: all 0.3s ease;
+        }
+        
+        [class*="bg-gradient-to-bottom"]:hover .bg-primary.bg-opacity-10 {
+          transform: rotate(10deg) scale(1.1);
           background-color: rgba(13, 110, 253, 0.2) !important;
-          transform: rotate(5deg);
-          transition: all 0.3s ease;
         }
         
-        /* Interactive card hover */
-        .bg-dark {
-          transition: all 0.3s ease;
+        /* Meta icon animation */
+        .fa-meta {
+          animation: float 3s ease-in-out infinite;
         }
         
-        .bg-dark:hover {
-          box-shadow: 0 10px 30px rgba(13, 110, 253, 0.15);
-        }
-        
-        .rounded-3 {
-          border-radius: 0.75rem !important;
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-5px); }
         }
         
         /* Responsive adjustments */
         @media (max-width: 768px) {
-          .container {
-            padding-left: 1rem !important;
-            padding-right: 1rem !important;
+          .display-5 {
+            font-size: 2rem !important;
           }
           
           .btn-lg {
-            padding-left: 1.5rem !important;
-            padding-right: 1.5rem !important;
+            width: 100%;
+            margin-bottom: 0.5rem;
+          }
+          
+          .d-flex.flex-md-row {
+            flex-direction: column !important;
+          }
+        }
+        
+        @media (max-width: 576px) {
+          .display-5 {
+            font-size: 1.75rem !important;
+          }
+          
+          .lead {
+            font-size: 1rem !important;
           }
         }
       `}</style>
