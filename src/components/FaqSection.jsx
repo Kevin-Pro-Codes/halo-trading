@@ -100,7 +100,7 @@ const FaqSection = () => {
               <div className="bg-primary bg-opacity-10 p-2 rounded-circle me-3">
                 <i className="bi bi-question-circle text-primary fs-3"></i>
               </div>
-              <h2 className="display-5 fw-bold mb-0 text-dark">MQL5 Expert Advisor FAQ</h2>
+              <h2 className="display-5 fw-bold mb-0 text-dark">Expert Advisor FAQ</h2>
             </div>
             <p className="lead text-muted mb-4">
               Common questions about our MetaTrader 5 cryptocurrency trading bot

@@ -90,7 +90,7 @@ const LatestSection = () => {
               <div className="bg-primary bg-opacity-10 p-2 rounded-circle me-3">
                 <i className="bi bi-code-square text-primary fs-3"></i>
               </div>
-              <h2 className="display-6 display-lg-5 fw-bold mb-0 text-white">Platform Updates</h2>
+              <h1 className="display-5 fw-bold mb-2 text-white">Platform Updates</h1>
             </div>
             <p className="lead text-white-50 mb-0">
               Latest developments in our MQL5 trading bot platform: Expert Advisors, indicators, MetaTrader 5 integrations, and trading tools
